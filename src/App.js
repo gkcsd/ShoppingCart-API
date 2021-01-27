@@ -1,7 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
+import { toast } from "react-toastify";
 
 function App() {
+  const [cartItem, setCartItem] = useState([]);
+
+  const addInCart = (item) => {
+    const alreadyItemAdded = cartItem.findIndex((array) => {
+      return array.id == item.id;
+    });
+
+    if (alreadyItemAdded !== -1) {
+      toast("already added item", {
+        type: "error",
+      });
+    }
+
+    setCartItem([...cartItem, item]);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
