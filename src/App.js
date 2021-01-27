@@ -21,6 +21,20 @@ function App() {
     setCartItem([...cartItem, item]);
   };
 
+  //Buy Now Method:
+  const buyNow = () => {
+    setCartItem([]);
+
+    toast("Purchase Complete", {
+      type: "success",
+    });
+  };
+
+  //Remove Method:
+  const removeItem = (item) => {
+    setCartItem(cartItem.filter((singleItem) => singleItem.id !== item.id));
+  };
+
   return (
     <div className="App">
       <header className="App-header">
