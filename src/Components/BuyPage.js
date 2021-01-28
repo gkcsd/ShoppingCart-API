@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { random, commerce } from "faker";
 import { Container, Col, Row } from "reactstrap";
+import CartItem from "./CartItem";
 
 const apiKey = "INSERT_YOUR_API_KEY";
 
@@ -46,7 +47,9 @@ const BuyPage = ({ addInCart }) => {
       <h1 className="text-success">Buy page</h1>
       <Row>
         {product.map((product) => (
-          <span key={product.id}>{product.productName}</span>
+          <Col md={4} key={product.id}>
+            <CartItem product={product} CartItem={CartItem} />
+          </Col>
         ))}
       </Row>
     </Container>
