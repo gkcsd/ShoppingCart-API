@@ -20,19 +20,25 @@ const Cart = ({ cartItem, removeItem, buyNow }) => {
   });
 
   return (
-    <Container fluid>
+    <Container
+      className="pt-1 pb-4"
+      fluid
+      style={{ backgroundColor: "white", borderRadius: "5px" }}
+    >
       <h1 className="text-success">Your Cart</h1>
       <ListGroup>
         {cartItem.map((item) => (
           <ListGroupItem key={item.id}>
             <Row>
               <Col>
-                <img height={80} src={item.tinyimage} />
+                <img height={80} src={item.tinyImage} />
               </Col>
               <Col className="text-center">
                 <div className="text-primary">{item.productName}</div>
                 <span>Price: $ {item.productPrice}</span>
-                <Button onClick={() => removeItem(item)}>Remove Item</Button>
+                <Button color="danger" onClick={() => removeItem(item)}>
+                  Remove Item
+                </Button>
               </Col>
             </Row>
           </ListGroupItem>
@@ -45,7 +51,7 @@ const Cart = ({ cartItem, removeItem, buyNow }) => {
         <Card className="text-center mt-3">
           <CardHeader>Grand Totoal</CardHeader>
           <CardBody>
-            Your amount for {cartItem.length} product is {amount}
+            Your amount for {cartItem.length} product is ${amount}
           </CardBody>
           <CardFooter>
             <Button className="success" onClick={buyNow}>
