@@ -23,13 +23,13 @@ const BuyPage = ({ addInCart }) => {
   // }
 
   const fetchPhotos = async () => {
-    const { data } = await Axios.get(localurl);
+    const { data } = await Axios.get(localurl, {});
 
     const { photos } = data;
 
     const allProduct = photos.map((photo) => ({
       smallImage: photo.src.medium,
-      timyImage: photo.src.tiny,
+      tinyImage: photo.src.tiny,
       productName: random.word(),
       productPrice: commerce.price(),
       id: random.uuid(),
@@ -44,11 +44,21 @@ const BuyPage = ({ addInCart }) => {
 
   return (
     <Container fluid>
-      <h1 className="text-success">Buy page</h1>
+      <h1
+        className="text-success"
+        width="100%"
+        style={{
+          backgroundColor: "white",
+          padding: "0 10px",
+          borderRadius: "4px",
+        }}
+      >
+        Buy page
+      </h1>
       <Row>
         {product.map((product) => (
           <Col md={4} key={product.id}>
-            <CartItem product={product} CartItem={CartItem} />
+            <CartItem product={product} addInCart={addInCart} />
           </Col>
         ))}
       </Row>
